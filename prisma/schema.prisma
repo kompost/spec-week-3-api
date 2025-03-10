@@ -8,11 +8,26 @@ generator client {
   provider = "prisma-client-js"
 }
 
+enum Manufacturer {
+  A
+  G
+  K
+  N
+  P
+  Q
+  R
+}
+
+enum Type {
+  C
+  H
+}
+
 model Cereal {
-  id       Int     @id @default(autoincrement())
-  name     String
-  mfr      String
-  type     String
+  id       Int    @id @default(autoincrement())
+  name     String @unique
+  mfr      Manufacturer
+  type     Type
   calories Int
   protein  Int
   fat      Int
@@ -32,4 +47,3 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
-
