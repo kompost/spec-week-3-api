@@ -8,6 +8,26 @@ generator client {
   provider = "prisma-client-js"
 }
 
+model Cereal {
+  id       Int     @id @default(autoincrement())
+  name     String
+  mfr      String
+  type     String
+  calories Int
+  protein  Int
+  fat      Int
+  sodium   Int
+  fiber    Float
+  carbo    Float
+  sugars   Int
+  potass   Int
+  vitamins Int
+  shelf    Int
+  weight   Float
+  cups     Float
+  rating   Float
+}
+
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
