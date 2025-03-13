@@ -6,6 +6,7 @@
 generator client {
   provider = "prisma-client-js"
 }
+
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
@@ -27,23 +28,21 @@ enum Type {
 }
 
 model Cereal {
-  id       Int    @id @default(autoincrement())
-  name     String @unique
+  id       Int          @id @default(autoincrement())
+  name     String       @unique
   mfr      Manufacturer
   type     Type
-  calories Int
-  protein  Int
-  fat      Int
-  sodium   Int
-  fiber    Float
-  carbo    Float
-  sugars   Int
-  potass   Int
-  vitamins Int
-  shelf    Int
-  weight   Float
-  cups     Float
-  rating   String
+  calories Int          @default(0)
+  protein  Int          @default(0)
+  fat      Int          @default(0)
+  sodium   Int          @default(0)
+  fiber    Float        @default(0)
+  carbo    Float        @default(0)
+  sugars   Int          @default(0)
+  potass   Int          @default(0)
+  vitamins Int          @default(0)
+  shelf    Int          @default(0)
+  weight   Float        @default(0)
+  cups     Float        @default(0)
+  rating   String       @default("empty")
 }
-
-
