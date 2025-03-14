@@ -41,8 +41,8 @@ This project is a NestJS-based API for a cereal lookup service. It provides endp
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/week_3_api.git
-   cd week_3_api
+   git clone https://github.com/kompost/spec-week-3-api.git 
+   cd spec-week-3-api
    ```
 
 2. **Install dependencies**:
@@ -51,13 +51,13 @@ This project is a NestJS-based API for a cereal lookup service. It provides endp
    ```
 
 3. **Set up the database**:
-   - Update the `.env` file with your database connection details.
    - Ensure you have a PostgreSQL database running.
    ```bash
    docker compose up -d
    ```
 
 4. **Run database migrations**:
+- [Contributing](#contributing)
    ```bash
    npx prisma migrate dev
    ```
