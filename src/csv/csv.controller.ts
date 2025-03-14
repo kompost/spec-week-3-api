@@ -19,7 +19,9 @@ export class FileUploadController {
         type: FileUploadDto,
     })
     @UseInterceptors(FileInterceptor('file'))
-    async uploadCSV(@UploadedFile(new CsvFileValidationPipe()) file: Express.Multer.File) {
+    async uploadCSV(
+        @UploadedFile(new CsvFileValidationPipe()) file: Express.Multer.File
+    ) {
         const content = file.buffer.toString('utf-8')
         // parse the content
         let result = await this.parser.parse(content)
@@ -30,9 +32,7 @@ export class FileUploadController {
             result = result.filter(item => item.name !== null)
         }
         // save the result to the database
-        await this.parser.save(result)
-
-        return { message: 'success', status: 200 }
+        return this.parser.save(result)
     }
 }
 
