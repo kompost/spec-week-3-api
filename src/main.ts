@@ -19,6 +19,7 @@ async function bootstrap() {
         )
         .setVersion('1.0')
         .addTag('Specialisterne - week 3 - API')
+        .addBearerAuth()
         .build();
 
     const rootDocument = SwaggerModule.createDocument(app, rootConfig);
