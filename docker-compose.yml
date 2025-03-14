@@ -4,7 +4,7 @@ services:
     container_name: week3-mysql
     restart: always
     env_file: 
-      - .env
+      - .env.development
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
