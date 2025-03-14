@@ -2,12 +2,12 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { patchNestJsSwagger, ZodValidationPipe } from 'nestjs-zod';
+import { ThrottlerGuard } from '@nestjs/throttler';
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
 
     patchNestJsSwagger();
-
     // Apply ZodValidationPipe globally
     app.useGlobalPipes(new ZodValidationPipe());
     app.setGlobalPrefix('v1');
