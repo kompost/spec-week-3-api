@@ -1,22 +1,28 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from 'src/prisma/prisma.service';
-import { Cereal } from '@prisma/client';
-
-// type CerealFilter = Omit<Cereal, 'id'>
 
 @Injectable()
-export class SearchQueryParserService {
-    constructor() {}
-
-    parseQuery(query: Record<string, any>) {
-        let obj: any = {};
-        for (let key in query) {
-            console.log(key, query[key]);
-            obj[key] = {
-                equals: query[key],
-            };
+export class SearchService {
+    toPrismaWhere(search: Record<string, any>) {
+        // Check if the value is a number
+        const regex = /^\d+$/;
+        let where = {
+            AND: [] as any
         }
-        console.log(obj);
-        return query;
+
+        for (const key in search) {
+            let value;
+
+            if (regex.test(search[key])) {
+                value = Number(search[key])
+            } else {
+                value = search[key]
+            }
+
+            where.AND.push({
+                [key]: value
+            })
+        }
+
+        return where
     }
 }

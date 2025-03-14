@@ -1,18 +1,25 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { Prisma } from '@prisma/client';
+import { SearchService } from './search-query-parser.service';
 
 @Injectable()
 export class CerealService {
-    constructor(private readonly prisma: PrismaService) {}
+    constructor(
+        private readonly prisma: PrismaService,
+        private readonly searchParser: SearchService,
+    ) { }
 
-    async getAll() {
-        return this.prisma.cereal.findMany().catch((err) => {
-            throw new HttpException(
-                'Internal server error',
-                HttpStatus.INTERNAL_SERVER_ERROR,
-            );
-        });
+    async getAll(search: Record<string, string>) {
+        const where = this.searchParser.toPrismaWhere(search);
+        return this.prisma.cereal
+            .findMany({ where })
+            .catch((err) => {
+                throw new HttpException(
+                    'Probably malformed search query',
+                    HttpStatus.I_AM_A_TEAPOT,
+                );
+            });
     }
 
     async getById(id: number) {
