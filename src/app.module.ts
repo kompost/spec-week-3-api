@@ -1,15 +1,13 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { CsvParserModule } from './csv-parser/csv-parser.module';
+import { CsvParserModule } from './csv/csv.module';
 import { PrismaModule } from './prisma/prisma.module';
+import { ProductsModule } from './cereal/cereal.module';
 
 @Module({
     imports: [
         CsvParserModule,
-        PrismaModule
+        PrismaModule,
+        ProductsModule
     ],
-    controllers: [AppController],
-    providers: [AppService],
 })
 export class AppModule { }
