@@ -8,4 +8,4 @@ import { PrismaModule } from 'src/prisma/prisma.module';
     providers: [CsvParserService],
     controllers: [FileUploadController],
 })
-export class CsvParserModule { }
+export class CsvParserModule {}

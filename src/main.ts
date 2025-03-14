@@ -14,7 +14,9 @@ async function bootstrap() {
 
     const rootConfig = new DocumentBuilder()
         .setTitle('Products API - week 3')
-        .setDescription('This is the API for the cereal lookup service - week 3')
+        .setDescription(
+            'This is the API for the cereal lookup service - week 3',
+        )
         .setVersion('1.0')
         .addTag('Specialisterne - week 3 - API')
         .build();

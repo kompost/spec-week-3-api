@@ -9,4 +9,4 @@ import { SearchQueryParserService } from './search-query-parser.service';
     providers: [CerealService, SearchQueryParserService],
     controllers: [CerealController],
 })
-export class ProductsModule { }
+export class ProductsModule {}

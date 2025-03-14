@@ -1,6 +1,6 @@
-import { createZodDto } from 'nestjs-zod'
-import { z } from 'zod'
-import { Manufacturer, Type } from '@prisma/client'
+import { createZodDto } from 'nestjs-zod';
+import { z } from 'zod';
+import { Manufacturer, Type } from '@prisma/client';
 
 const UpdateCerealSchema = z.object({
     type: z.nativeEnum(Type).optional(),
@@ -18,8 +18,7 @@ const UpdateCerealSchema = z.object({
     weight: z.number().min(0).optional(),
     cups: z.number().min(0).optional(),
     rating: z.string().optional(),
-})
+});
 
 // class is required for using DTO as a type
-export class UpdateCerealDto extends createZodDto(UpdateCerealSchema) { }
-
+export class UpdateCerealDto extends createZodDto(UpdateCerealSchema) {}

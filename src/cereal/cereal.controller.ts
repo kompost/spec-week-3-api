@@ -11,37 +11,32 @@ export class CerealController {
     constructor(
         private readonly cereal: CerealService,
         // private readonly searchParser: SearchQueryParserService,
-    ) { }
+    ) {}
 
     @Get()
     @ApiOperation({ summary: 'Retrieve all cereal Cereal' })
-    async getCereal(
-    ) {
+    async getCereal() {
         return await this.cereal.getAll();
     }
 
     @Get(':id')
     @ApiOperation({ summary: 'Retrieve single cereal by id' })
-    async getProduct(
-        @Param('id') id: string
-    ) {
-        return await this.cereal.getById(Number(id))
+    async getProduct(@Param('id') id: string) {
+        return await this.cereal.getById(Number(id));
     }
 
     @Delete(':id')
     @ApiOperation({ summary: 'Delete a cereal' })
-    async deleteProduct(
-        @Param('id') id: string
-    ) {
-        return await this.cereal.delete(Number(id))
+    async deleteProduct(@Param('id') id: string) {
+        return await this.cereal.delete(Number(id));
     }
 
     @Post()
     @ApiOperation({ summary: 'Create a new cereal' })
-    async create(
-        @Body() createProductDTO: CreateCerealDto
-    ) {
-        return await this.cereal.create(createProductDTO as unknown as Prisma.CerealCreateInput)
+    async create(@Body() createProductDTO: CreateCerealDto) {
+        return await this.cereal.create(
+            createProductDTO as unknown as Prisma.CerealCreateInput,
+        );
     }
 
     @Post(':id')
@@ -50,6 +45,9 @@ export class CerealController {
         @Param('id') id: string,
         @Body() updateProductDTO: UpdateCerealDto,
     ) {
-        return await this.cereal.update(Number(id), updateProductDTO as unknown as Prisma.CerealUpdateInput)
+        return await this.cereal.update(
+            Number(id),
+            updateProductDTO as unknown as Prisma.CerealUpdateInput,
+        );
     }
 }

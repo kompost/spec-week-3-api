@@ -6,18 +6,17 @@ import { Cereal } from '@prisma/client';
 
 @Injectable()
 export class SearchQueryParserService {
-    constructor() { }
+    constructor() {}
 
     parseQuery(query: Record<string, any>) {
-        let obj: any = {}
+        let obj: any = {};
         for (let key in query) {
-            console.log(key, query[key])
+            console.log(key, query[key]);
             obj[key] = {
-                equals: query[key]
-            }
-
+                equals: query[key],
+            };
         }
-        console.log(obj)
+        console.log(obj);
         return query;
     }
 }
