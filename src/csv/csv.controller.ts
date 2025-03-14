@@ -11,10 +11,10 @@ import { FileUploadDto } from './dto/file-upload.dto';
 import { CsvFileValidationPipe } from './pipes/csv-file-validator.pipe';
 import { CsvParserService } from './csv.service';
 
-@ApiTags('upload csv file')
+@ApiTags('Upload csv file with cereal data')
 @Controller('upload')
 export class FileUploadController {
-    constructor(private readonly parser: CsvParserService) {}
+    constructor(private readonly parser: CsvParserService) { }
 
     @Post()
     @ApiOperation({ summary: 'Upload a CSV file' })
